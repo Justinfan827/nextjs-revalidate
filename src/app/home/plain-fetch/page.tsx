@@ -1,6 +1,6 @@
 import React from "react";
 
-export default async function TransactionsPage() {
+export default async function Page() {
   const data = await fetch("http://localhost:3001/api/transactions");
   const dataJson = await data.json();
   return (

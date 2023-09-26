@@ -1,12 +1,16 @@
 import React from "react";
 
-export const revalidate = 5;
+// Additional revalidate values causes the route to use the lowest of all revalidate values
+// export const revalidate = 5;
 
 export default async function Page() {
   const data = await fetch("http://localhost:3001/api/transactions", {
+    next: {
+      // revalidate: 5,
+    },
     headers: {
-      // random integer
-     random: Math.floor(Math.random() * 2),
+      // random integer causes cache misses, even with the next.revalidate set
+      // random: new Date()
     },
   });
   const dataJson = await data.json();
